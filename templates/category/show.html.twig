@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil Shop
+{% block title %}
+	{{ category.name }}
 {% endblock %}
 
 {% block body %}
-	{% include "home/_header.html.twig" %}
-	<h1 class="title">Nos produits</h1>
-
+	<h1 class="title">{{ category.name }}</h1>
 	<div class="row">
 		{% for p in products %}
 
-			<div class="col">
+			<div class="col-3">
 				{% include "shared/_card.html.twig" %}
 			</div>
 

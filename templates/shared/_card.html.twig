@@ -1,12 +1,13 @@
 <div class="card mb-3">
-	<img src="{{ p.mainPicture }}" class="img-fluid" alt="image">
+	<img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2VyYW1pY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" class="img-fluid" alt="image">
 	<div class="card-body">
 		<h4 class="card-title">{{ p.name }}
 			-
 			{{ p.price | amount }}</h4>
-		<span class="badge bg-info">{{ p.category.name }}</span>
-		<p class="card-text">{{ p.shortDescription | cutString(70)}}</p>
-		<a href="{{ path("product_show", { 'category_slug': p.category.slug, 'slug': p.slug }) }}" class="btn btn-primary btn-sm">Détails</a>
-		<a href="{{ path('cart_add', {'id': p.id}) }}" class="btn btn-success btn-sm">Ajouter au panier</a>
+		{% for c in p.category %}
+			<span class="badge bg-info">{{c.name}}</span>
+		{% endfor %}
+		<p class="card-text">{{ p.description }}</p>
+		<a href="{{ path("product_show", {'productSlug': p.slug}) }}" class="btn btn-primary btn-sm">Détails</a>
 	</div>
 </div>
